@@ -2,11 +2,11 @@
 
 #### Bit array structure:
 ```c
-struct  BitArray
+struct BitArray
 {
-	int  bitsNeeded;
-	int  arraySize;
-	unsigned  int  array[MAX_BIT_ARRAY_SIZE];
+    int bitsNeeded;
+    int arraySize;
+    unsigned int array[]; // Flexible Array
 };
 typedef  struct  BitArray  BitArray;
 ```
