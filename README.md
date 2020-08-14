@@ -55,7 +55,7 @@ void  printBitArray(BitArray  *bitArr);
   Prints the bit array as a binary string (of 1s and 0s).
 */
 
-void  clearAllBits(BitArray  *bitArr)
+void  clearAllBits(BitArray  *bitArr);
 /*
   Clears all the bits of the bit array.
 */
@@ -65,5 +65,7 @@ void  setAllBits(BitArray  *bitArr);
   Sets all the bits of the bit array.
 */
 
-####### Feel free to contribute and open any issues.
+Check main.c file for usage.
+
+###### Feel free to contribute and open any issues.
 ```
