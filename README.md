@@ -38,6 +38,12 @@ bool  clearBit(BitArray  *bitArr,  int  k);
   Returns true on success and false on failure.
 */
 
+bool toggleBit(BitArray *bitArr, int k);
+/* 
+  Toggles the (k-1)th bit (makes it 0 if 1 and 1 if 0)
+  Returns true on success and false on failure.
+*/
+
 bool  isBitSet(BitArray  *bitArr,  int  k);
 /*
   Checks of the (k-1)th bit is set(1) or not(0).
@@ -58,4 +64,6 @@ void  setAllBits(BitArray  *bitArr);
 /*
   Sets all the bits of the bit array.
 */
+
+####### Feel free to contribute and open any issues.
 ```
