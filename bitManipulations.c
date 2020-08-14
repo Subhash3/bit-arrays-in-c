@@ -10,16 +10,22 @@ int getBitArraySize(int bitsNeeded)
 
 BitArray *initBitArray(BitArray *bitArr, int bitsNeeded)
 {
-    BitArray *temp = malloc(sizeof(BitArray *));
+    int arrSize = getBitArraySize(bitsNeeded);
+    int i;
+
+    BitArray *temp = malloc(sizeof(BitArray *) + arrSize * sizeof(int));
     if (!temp)
     {
         return NULL;
     }
     bitArr = (BitArray *)temp;
-
-    int arrSize = getBitArraySize(bitsNeeded);
     bitArr->bitsNeeded = bitsNeeded;
     bitArr->arraySize = arrSize;
+
+    for (i = 0; i < arrSize; i++)
+    {
+        bitArr->array[i] = 0;
+    }
 
     return bitArr;
 }
