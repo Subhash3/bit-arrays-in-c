@@ -27,6 +27,7 @@ BitArray *initBitArray(BitArray *bitArr, int bitsNeeded)
         bitArr->array[i] = 0;
     }
 
+    clearAllBits(bitArr);
     return bitArr;
 }
 
@@ -103,4 +104,20 @@ void setAllBits(BitArray *bitArr)
     }
 
     return;
+}
+
+int equivalentDecimal(BitArray *bitArr)
+{
+    int placeValue = 1, i, decimal = 0;
+
+    for (i = bitArr->bitsNeeded - 1; i >= 0; i--)
+    {
+        if (isBitSet(bitArr, i))
+        {
+            decimal += placeValue;
+        }
+        placeValue *= 2;
+    }
+
+    return decimal;
 }

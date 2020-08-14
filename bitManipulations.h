@@ -63,4 +63,9 @@ void setAllBits(BitArray *bitArr);
   Sets all the bits of the bit array.
 */
 
+int equivalentDecimal(BitArray *bitArr);
+/*
+  Returns an equivalent decimal to the bit array.
+*/
+
 #endif
