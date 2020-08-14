@@ -14,6 +14,10 @@ int main()
     printBitArray(bitArray);
     setBit(bitArray, 7);
     printBitArray(bitArray);
+    toggleBit(bitArray, 7);
+    printBitArray(bitArray);
+    toggleBit(bitArray, 7);
+    printBitArray(bitArray);
     clearBit(bitArray, 5);
     printBitArray(bitArray);
     setAllBits(bitArray);

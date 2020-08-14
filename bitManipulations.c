@@ -55,6 +55,16 @@ bool isBitSet(BitArray *bitArr, int k)
     return ((bitArr->array[k / SIZE_OF_INT_IN_BITS] & (1 << (k % SIZE_OF_INT_IN_BITS))) != 0);
 }
 
+bool toggleBit(BitArray *bitArr, int k)
+{
+    if (k >= bitArr->bitsNeeded)
+    {
+        return false;
+    }
+    bitArr->array[k / SIZE_OF_INT_IN_BITS] ^= (1 << (k % SIZE_OF_INT_IN_BITS));
+    return true;
+}
+
 void printBitArray(BitArray *bitArr)
 {
     int i, size = bitArr->bitsNeeded;

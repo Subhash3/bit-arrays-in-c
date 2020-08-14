@@ -43,6 +43,12 @@ bool isBitSet(BitArray *bitArr, int k);
   Returns true if set and false otherwise.
 */
 
+bool toggleBit(BitArray *bitArr, int k);
+/* 
+  Toggles the (k-1)th bit (makes it 0 if 1 and 1 if 0)
+  Returns true on success and false on failure.
+*/
+
 void printBitArray(BitArray *bitArr);
 /*
   Prints the bit array as a binary string (of 1s and 0s).
