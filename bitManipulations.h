@@ -1,14 +1,13 @@
 #ifndef __bitManipulations_H__
 #define __bitManipulations_H__
 #include <stdbool.h>
-
-#define SIZE_OF_INT_IN_BITS sizeof(int) * 8
+#include <stdlib.h>
 
 struct BitArray
 {
   int bitsNeeded;
   int arraySize;
-  unsigned int array[]; // Flexible Array
+  u_int8_t array[]; // Flexible Array
 };
 
 typedef struct BitArray BitArray;
