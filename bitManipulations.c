@@ -87,7 +87,7 @@ void printBitArray(BitArray **bitArr)
 
     for (i = 0; i < (*bitArr)->arraySize; i++)
     {
-        printf("%d, ", (*bitArr)->array[i]);
+        printf("   \x1b[34m%d\x1b[0m     ", (*bitArr)->array[i]);
     }
 
     printf("\n");
