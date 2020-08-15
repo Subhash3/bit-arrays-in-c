@@ -5,10 +5,10 @@
 
 int getBitArraySize(int bitsNeeded)
 {
-    return bitsNeeded / sizeof(int);
+    return bitsNeeded / SIZE_OF_INT_IN_BITS + 1;
 }
 
-BitArray *initBitArray(BitArray *bitArr, int bitsNeeded)
+BitArray *initBitArray(BitArray **bitArr, int bitsNeeded)
 {
     int arrSize = getBitArraySize(bitsNeeded);
     int i;
@@ -18,66 +18,66 @@ BitArray *initBitArray(BitArray *bitArr, int bitsNeeded)
     {
         return NULL;
     }
-    bitArr = (BitArray *)temp;
-    bitArr->bitsNeeded = bitsNeeded;
-    bitArr->arraySize = arrSize;
+    (*bitArr) = (BitArray *)temp;
+    (*bitArr)->bitsNeeded = bitsNeeded;
+    (*bitArr)->arraySize = arrSize;
 
     for (i = 0; i < arrSize; i++)
     {
-        bitArr->array[i] = 0;
+        (*bitArr)->array[i] = 5;
     }
 
     clearAllBits(bitArr);
-    return bitArr;
+    return (*bitArr);
 }
 
-bool setBit(BitArray *bitArr, int k)
+bool setBit(BitArray **bitArr, int k)
 {
-    if (k >= bitArr->bitsNeeded)
+    if (k >= (*bitArr)->bitsNeeded)
     {
         return false;
     }
-    bitArr->array[k / SIZE_OF_INT_IN_BITS] |= (1 << (k % SIZE_OF_INT_IN_BITS));
+    (*bitArr)->array[k / SIZE_OF_INT_IN_BITS] |= (1 << (k % SIZE_OF_INT_IN_BITS));
 
     return true;
 }
 
-bool clearBit(BitArray *bitArr, int k)
+bool clearBit(BitArray **bitArr, int k)
 {
-    if (k >= bitArr->bitsNeeded)
+    if (k >= (*bitArr)->bitsNeeded)
     {
         return false;
     }
-    bitArr->array[k / SIZE_OF_INT_IN_BITS] &= ~(1 << (k % SIZE_OF_INT_IN_BITS));
+    (*bitArr)->array[k / SIZE_OF_INT_IN_BITS] &= ~(1 << (k % SIZE_OF_INT_IN_BITS));
 
     return true;
 }
 
-bool isBitSet(BitArray *bitArr, int k)
+bool isBitSet(BitArray **bitArr, int k)
 {
-    if (k >= bitArr->bitsNeeded)
+    if (k >= (*bitArr)->bitsNeeded)
     {
         return false;
     }
-    return ((bitArr->array[k / SIZE_OF_INT_IN_BITS] & (1 << (k % SIZE_OF_INT_IN_BITS))) != 0);
+    return (((*bitArr)->array[k / SIZE_OF_INT_IN_BITS] & (1 << (k % SIZE_OF_INT_IN_BITS))) != 0);
 }
 
-bool toggleBit(BitArray *bitArr, int k)
+bool toggleBit(BitArray **bitArr, int k)
 {
-    if (k >= bitArr->bitsNeeded)
+    if (k >= (*bitArr)->bitsNeeded)
     {
         return false;
     }
-    bitArr->array[k / SIZE_OF_INT_IN_BITS] ^= (1 << (k % SIZE_OF_INT_IN_BITS));
+    (*bitArr)->array[k / SIZE_OF_INT_IN_BITS] ^= (1 << (k % SIZE_OF_INT_IN_BITS));
     return true;
 }
 
-void printBitArray(BitArray *bitArr)
+void printBitArray(BitArray **bitArr)
 {
-    int i, size = bitArr->bitsNeeded;
+    int i, size = (*bitArr)->bitsNeeded;
     for (i = 0; i < size; i++)
     {
-        printf((isBitSet(bitArr, i)) ? "1" : "0");
+        printf((isBitSet(bitArr, i)) ? "\x1b[33m1\x1b[0m" : "0");
         fflush(NULL); // flushing must be done 'cuz we're not using \n
     }
     printf("\n");
@@ -85,9 +85,9 @@ void printBitArray(BitArray *bitArr)
     return;
 }
 
-void clearAllBits(BitArray *bitArr)
+void clearAllBits(BitArray **bitArr)
 {
-    int i, size = bitArr->bitsNeeded;
+    int i, size = (*bitArr)->bitsNeeded;
     for (i = 0; i < size; i++)
     {
         clearBit(bitArr, i);
@@ -95,9 +95,9 @@ void clearAllBits(BitArray *bitArr)
 
     return;
 }
-void setAllBits(BitArray *bitArr)
+void setAllBits(BitArray **bitArr)
 {
-    int i, size = bitArr->bitsNeeded;
+    int i, size = (*bitArr)->bitsNeeded;
     for (i = 0; i < size; i++)
     {
         setBit(bitArr, i);
@@ -106,11 +106,11 @@ void setAllBits(BitArray *bitArr)
     return;
 }
 
-int equivalentDecimal(BitArray *bitArr)
+int equivalentDecimal(BitArray **bitArr)
 {
     int placeValue = 1, i, decimal = 0;
 
-    for (i = bitArr->bitsNeeded - 1; i >= 0; i--)
+    for (i = (*bitArr)->bitsNeeded - 1; i >= 0; i--)
     {
         if (isBitSet(bitArr, i))
         {

@@ -4,20 +4,21 @@
 int main()
 {
     BitArray *bitArray = NULL;
-    int bitsNeeded = 5;
-    bitArray = initBitArray(bitArray, bitsNeeded);
+    int bitsNeeded = 6;
 
-    printBitArray(bitArray);
-    printf("%d\n", equivalentDecimal(bitArray));
-    setBit(bitArray, 0);
-    printBitArray(bitArray);
-    printf("%d\n", equivalentDecimal(bitArray));
-    setBit(bitArray, 1);
-    printBitArray(bitArray);
-    printf("%d\n", equivalentDecimal(bitArray));
-    setBit(bitArray, bitsNeeded - 1);
-    printBitArray(bitArray);
-    printf("%d\n", equivalentDecimal(bitArray));
+    bitArray = initBitArray(&bitArray, bitsNeeded);
+
+    printBitArray(&bitArray);
+    setBit(&bitArray, 0);
+    printBitArray(&bitArray);
+    setBit(&bitArray, 1);
+    printBitArray(&bitArray);
+    clearAllBits(&bitArray);
+    printBitArray(&bitArray);
+    setBit(&bitArray, bitsNeeded - 1);
+    printBitArray(&bitArray);
+    setAllBits(&bitArray);
+    printBitArray(&bitArray);
 
     return 0;
 }
