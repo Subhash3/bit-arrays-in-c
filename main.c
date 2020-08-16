@@ -4,6 +4,15 @@
 
 int main()
 {
+    printf("\t------- USAGE ----------\n");
+    printf("Bytes are ordered using little endian byte ordering.\n");
+    printf("For eg. if your bit array is of length 19, its indices look like this: \n");
+    printf("\x1b[33m\t8,7,6,5,4,3,2,1 - 16,15,14,13,12,11,10,9 - 19,18,17\x1b[0m\n");
+    printf("Notice that in the above example, the bytes are separated using '-'\n\t and bits of each byte are separated using ','\n");
+    printf("\t------------------------\n\n");
+    printf("Press enter to continue... ");
+    scanf("%*c");
+
     BitArray *bitArray = NULL;
     int bitsNeeded = 12, choice = -1, bitIndex;
 
