@@ -14,9 +14,9 @@ int main()
     scanf("%*c");
 
     BitArray *bitArray = NULL;
-    int bitsNeeded = 12, choice = -1, bitIndex;
+    int bitsNeeded = 10, choice = -1, bitIndex;
 
-    bitArray = initBitArray(&bitArray, bitsNeeded);
+    bitArray = initBitArrayWithInteger(&bitArray, bitsNeeded, 5);
     printBitArray(&bitArray);
 
     while (1)

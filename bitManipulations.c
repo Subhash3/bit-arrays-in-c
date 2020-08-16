@@ -20,6 +20,11 @@ int getBitArraySize(int bitsNeeded)
 
 BitArray *initBitArray(BitArray **bitArr, int bitsNeeded)
 {
+    return initBitArrayWithInteger(bitArr, bitsNeeded, 0);
+}
+
+BitArray *initBitArrayWithInteger(BitArray **bitArr, int bitsNeeded, int integer)
+{
     int arrSize = getBitArraySize(bitsNeeded);
     int i;
 
@@ -34,10 +39,9 @@ BitArray *initBitArray(BitArray **bitArr, int bitsNeeded)
 
     for (i = 0; i < arrSize; i++)
     {
-        (*bitArr)->array[i] = 0;
+        (*bitArr)->array[i] = integer;
     }
 
-    // clearAllBits(bitArr);
     return (*bitArr);
 }
 

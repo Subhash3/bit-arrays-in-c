@@ -24,9 +24,21 @@ BitArray *initBitArray(BitArray **bitArr, int bitsNeeded);
   Returns a pointer to the newly created BitArray object on success and NULL on failure.
 */
 
+
+BitArray *initBitArrayWithInteger(BitArray **bitArr, int bitsNeeded, int integer);
+/*
+  Creates a bit array.
+  Returns a BitArray object(with each byte set to integer) on success and NULL on failure.
+  If the provided integer doens't fit within the specified bits, then the most significant bits will be neglected.'
+*/
+
 // Eg.
 int bitsNeeded = 10; // No. of bits you want to work with
 bitArray =  initBitArray(&bitArray, bitsNeeded);
+
+    OR
+num = 5
+bitArray =  initBitArrayWithInteger(&bitArray, bitsNeeded, num);
 ```
 ##### Bit Operations
 ```c

@@ -21,7 +21,14 @@ int getBitArraySize(int bitsNeeded);
 BitArray *initBitArray(BitArray **bitArr, int bitsNeeded);
 /*
   Creates a bit array.
-  Returns a BitArray object on success and NULL on failure.
+  Returns a BitArray object(with all bits cleared(0)) on success and NULL on failure.
+*/
+
+BitArray *initBitArrayWithInteger(BitArray **bitArr, int bitsNeeded, int integer);
+/*
+  Creates a bit array.
+  Returns a BitArray object(with each byte set to integer) on success and NULL on failure.
+  If the provided integer doens't fit within the specified bits, then the most significant bits will be neglected.'
 */
 bool setBit(BitArray **bitArr, int k);
 /* 
