@@ -2,7 +2,9 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <math.h>
+#include <string.h>
 #include "bitManipulations.h"
+#include "helperFunctions.h"
 
 int SIZE_OF_UINT8_IN_BITS = sizeof(u_int8_t) * 8;
 int SIZE_OF_INT_IN_BITS = sizeof(int) * 8;
@@ -83,7 +85,9 @@ bool toggleBit(BitArray **bitArr, int k)
 void printBitArray(BitArray **bitArr)
 {
     int i, size = (*bitArr)->bitsNeeded;
-    int printedBits = 0;
+    int j = 0;
+    u_int8_t byteLength = 8;
+    char byte[byteLength + 1];
 
     for (i = 0; i < (*bitArr)->arraySize; i++)
     {
@@ -93,11 +97,14 @@ void printBitArray(BitArray **bitArr)
     printf("\n");
     for (i = 0; i < size; i++)
     {
-        printf((isBitSet(bitArr, i)) ? "\x1b[33m1\x1b[0m" : "0");
-        printedBits++;
-        if (printedBits % 8 == 0)
+        // printf((isBitSet(bitArr, i)) ? "\x1b[33m1\x1b[0m" : "0");
+        byte[j++] = (isBitSet(bitArr, i)) ? '1' : '0';
+        if ((i + 1) % byteLength == 0 || i == size - 1)
         {
-            printf(" ");
+            byte[j] = '\0';
+            stringReverseInPlace(byte, j);
+            j = 0;
+            printf("%s ", byte);
         }
         fflush(NULL); // flushing must be done 'cuz we're not using \n
     }

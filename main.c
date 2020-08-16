@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include "bitManipulations.h"
+#include "helperFunctions.h"
 
 int main()
 {
     BitArray *bitArray = NULL;
-    int bitsNeeded = 6, choice = -1, bitIndex;
+    int bitsNeeded = 12, choice = -1, bitIndex;
 
     bitArray = initBitArray(&bitArray, bitsNeeded);
     printBitArray(&bitArray);
@@ -22,24 +23,20 @@ int main()
         switch (choice)
         {
         case 1:
-            printf("\t Which bit to set?: ");
+            printf("\t>> Which bit to set?: ");
             scanf("%d", &bitIndex);
-            setBit(&bitArray, bitIndex);
-            printBitArray(&bitArray);
+            setBit(&bitArray, bitIndex - 1);
             break;
         case 2:
-            printf("\t Which bit to clear?: ");
+            printf("\t>> Which bit to clear?: ");
             scanf("%d", &bitIndex);
-            clearBit(&bitArray, bitIndex);
-            printBitArray(&bitArray);
+            clearBit(&bitArray, bitIndex - 1);
             break;
         case 3:
             setAllBits(&bitArray);
-            printBitArray(&bitArray);
             break;
         case 4:
             clearAllBits(&bitArray);
-            printBitArray(&bitArray);
             break;
         case 5:
             printf("%d\n", equivalentDecimal(&bitArray));
@@ -50,21 +47,8 @@ int main()
             printf("Invalid Choice!\n");
             break;
         }
+        printBitArray(&bitArray);
     }
-
-    printBitArray(&bitArray);
-    printf("%d\n", equivalentDecimal(&bitArray));
-    setBit(&bitArray, 0);
-    printBitArray(&bitArray);
-    // setBit(&bitArray, 1);
-    // printBitArray(&bitArray);
-    // clearAllBits(&bitArray);
-    // printBitArray(&bitArray);
-    setBit(&bitArray, bitsNeeded - 1);
-    printBitArray(&bitArray);
-    // printf("%d\n", equivalentDecimal(&bitArray));
-    // setAllBits(&bitArray);
-    // printBitArray(&bitArray);
 
     return 0;
 }
